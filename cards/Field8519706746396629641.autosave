@@ -1,0 +1,44 @@
+public class Field {
+ 
+    public PVector[][] nodes;
+    public int widthInMm;
+    public int heightInMm;
+    public int horiztonalSlots;
+    public int verticalSlots;
+
+    public Field(int horiztonalSlots, int verticalSlots, int widthInMm, int heightInMm) {
+        this.nodes = new PVector[horiztonalSlots][verticalSlots];
+        this.widthInMm = widthInMm;
+        this.heightInMm = heightInMm;
+        this.horiztonalSlots = horiztonalSlots;
+        this.verticalSlots = verticalSlots;
+
+        for(int x = 0; x < horiztonalSlots; ++x){
+          for(int y = 0; y < verticalSlots; ++y){
+            nodes[x][y] = nodes[x][y].random2D();
+          }
+        }
+    }
+  
+    public void draw(PDF pdf) {      
+      pdf.fillCMYK(0, 0.5, 0, 0);
+      pdf.circle(mm(10),mm(10),mm(2));
+
+      for(int x = 0; x < horiztonalSlots; ++x){
+        for(int y = 0; y < verticalSlots; ++y){
+          pdf.circle(mm(x),mm(y),mm(0.2));
+          PVector location = xyToMmCoordinate(x, y);
+          println(location);
+          pdf.circle(mm(location.x), mm(location.y), mm(0.2));
+        }
+      }
+
+    }     
+
+    public PVector xyToMmCoordinate(int x, int y){      
+      float xMM = ((float)x / horiztonalSlots) * widthInMm;
+      float yMM = ((float)y / verticalSlots) * heightInMm;
+
+      return new PVector(xMM, yMM);
+    }
+}
