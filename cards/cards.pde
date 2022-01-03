@@ -17,8 +17,16 @@ void setup() {
 
   // translate to corner
   pdf.translate(mm(6), mm(6));  
-  Field field = new Field(20,60,57,82);
-  field.draw(pdf);
+  // Field field = new Field(14,20,57,82);
+  // field.advance();
+  // field.advance();
+  // field.advance();
+  // field.draw(pdf);
+
+  pdf.translate(mm(28), mm(40));  
+
+  Stone stone = new Stone();
+  stone.draw(pdf);
   
   // pdf.pushMatrix();
   //   // pdf.fillCMYK(0.5, 0, 0, 0);
