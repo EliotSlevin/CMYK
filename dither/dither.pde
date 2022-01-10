@@ -8,14 +8,20 @@ void setup() {
   pdf.clip(mm(6), mm(6), mm(57), mm(82));
 
   // background grey
-  pdf.fillCMYK(0, 0, 0, 0.1);
-  pdf.rect(mm(6), mm(6), mm(57), mm(82));
+  // pdf.fillCMYK(0, 0, 0, 0.1);
+  // pdf.rect(mm(6), mm(6), mm(57), mm(82));
 
 
   // translate to corner
   pdf.translate(mm(6), mm(6));  
 
-  Grid grid = new Grid(16,23);
+  Grid grid = new Grid(16,23, 0.05, 0.0, 0.0, 0.33);
+  grid.dither();
+  grid.draw(pdf);
+
+  Grid gridTheSecond = new Grid(16,23, 0.06, 0.0, 0.0, 0.77);
+  gridTheSecond.dither();
+  gridTheSecond.draw(pdf);
 
   //8/12 (checkerboards)  1.04 aspect ratio
   //16/24
@@ -23,8 +29,7 @@ void setup() {
   //12/18
 
   //9/13 1.004
-  grid.dither();
-  grid.draw(pdf);
+
 
 
   // -----------------------------------------------------------------------------------
