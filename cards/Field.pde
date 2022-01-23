@@ -21,8 +21,8 @@ public class Field {
     }
   
     public void draw(PDF pdf) {      
-      pdf.strokeK(1.0);
-      pdf.strokeWeight(0.5);
+      pdf.strokeK(0);
+      pdf.strokeWeight(mm(0.4));
       pdf.strokeCap(ROUND);
 
       for(int x = 0; x < horiztonalSlots; ++x){

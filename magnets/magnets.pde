@@ -5,11 +5,14 @@ void setup() {
   pdf.noStroke();
 
   // setup border clip
-  pdf.clip(mm(6), mm(6), mm(57), mm(82));
+  //pdf.clip(mm(6), mm(6), mm(57), mm(82));
 
   // background grey
-  pdf.fillCMYK(0, 0, 0, 1);
-  pdf.rect(mm(6), mm(6), mm(57), mm(82));
+  // pdf.fillCMYK(0, 0, 0, 1);
+  // pdf.rect(mm(6), mm(6), mm(57), mm(82));
+
+  pdf.fillCMYK(1, 0, 0.15, 0.5);
+  pdf.rect(mm(0), mm(0), mm(69), mm(94));
 
   // translate to center
   //pdf.translate(mm(34.5), mm(47));  
@@ -18,48 +21,7 @@ void setup() {
   // translate to corner
   pdf.translate(mm(6), mm(6));  
   Field field = new Field(14,20,57,82);
-  field.advance();
-  field.advance();
-  field.advance();
-  // field.advance();
-  // field.advance();
   field.draw(pdf);
-
-  pdf.translate(mm(28), mm(40));  
-
-  // Stone stone = new Stone();
-  // stone.draw(pdf);
-  
-  // pdf.pushMatrix();
-  //   // pdf.fillCMYK(0.5, 0, 0, 0);
-  //   // pdf.circle(mm(0),mm(0),mm(2));
-  // pdf.popMatrix();
-
-
-  
-
-//  for(int i = 0; i < 10; ++i){
-//    pdf.pushMatrix();
-//        float size = random(10,40); 
-
-//        pdf.fillCMYK(random(0,1), random(0,1), random(0,1), random(0,1));
-
-//        pdf.rotate(random(0, TWO_PI));
-//        pdf.translate(mm(random(2,40)),0);
-        
-
-//        int index = int(random(2));
-//        switch(index){
-//        case 0 : 
-//            pdf.circle(mm(0),mm(0),mm(size));
-//            break; // Here
-//        case 1 :
-//            pdf.square(mm(0),mm(0),mm(size));
-//            break; // And here
-//}
-
-//    pdf.popMatrix();
-//  }
 
   // -----------------------------------------------------------------------------------
   // Save and close

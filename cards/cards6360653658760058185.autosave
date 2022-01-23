@@ -17,12 +17,10 @@ void setup() {
 
   // translate to corner
   pdf.translate(mm(6), mm(6));  
-  Field field = new Field(14,20,57,82);
+  Field field = new Field(32,46,57,82);
   field.advance();
   field.advance();
   field.advance();
-  // field.advance();
-  // field.advance();
   field.draw(pdf);
 
   pdf.translate(mm(28), mm(40));  
