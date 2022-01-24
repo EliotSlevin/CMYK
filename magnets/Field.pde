@@ -83,12 +83,13 @@ public class Field {
         }
     }
   
-    public void draw(PDF pdf) {      
+    public void draw(PDF pdf) {   
+      pdf.noFill();   
       pdf.strokeK(0);
       pdf.strokeWeight(mm(1.2));
       pdf.strokeCap(ROUND);
 
-      float distance = ((float)widthInMm / horiztonalSlots)/2;
+      float distance = ((float)widthInMm / horiztonalSlots)/2 ;
 
       for(int x = 0; x < horiztonalSlots; ++x){
         for(int y = 0; y < verticalSlots; ++y){
@@ -102,6 +103,15 @@ public class Field {
             mm(location.y - (vertDiff/2)), 
             mm(location.x + (nodes[x][y].x * distance) - (horiztonalDiff/2)),  
             mm(location.y + (nodes[x][y].y) * distance) - (vertDiff/2));
+
+          // pdf.beginShape();
+          // pdf.vertex(mm(location.x), mm(location.y));
+          // pdf.bezierVertex(
+          //   mm(location.x + 1), mm(location.y), 
+          //   mm(location.x + (nodes[x][y].x * distance) - 1), mm(location.y + (nodes[x][y].y) * distance), 
+          //   mm(location.x + (nodes[x][y].x * distance)),  mm(location.y + (nodes[x][y].y) * distance)
+          // );	
+          // pdf.endShape();
         }
       }
 
