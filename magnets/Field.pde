@@ -84,12 +84,18 @@ public class Field {
     }
   
     public void draw(PDF pdf) {   
-      pdf.noFill();   
-      pdf.strokeK(0);
-      pdf.strokeWeight(mm(1.2));
-      pdf.strokeCap(ROUND);
+      // pdf.noFill();   
+      // pdf.strokeK(0);
+      // pdf.strokeWeight(mm(1.2));
+      // pdf.strokeCap(PROJECT);
 
-      float distance = ((float)widthInMm / horiztonalSlots)/2 ;
+      pdf.fillK(0);
+      pdf.noStroke();
+
+      // pdf.noStroke();
+      // pdf.fillK(0);
+
+      float distance = ((float)widthInMm / horiztonalSlots) / 2 ;
 
       for(int x = 0; x < horiztonalSlots; ++x){
         for(int y = 0; y < verticalSlots; ++y){
@@ -98,11 +104,35 @@ public class Field {
           float horiztonalDiff = nodes[x][y].x * distance;
 
           PVector location = xyToMmCoordinate(x + 0.5, y + 0.5);
-          pdf.line(
-            mm(location.x - (horiztonalDiff/2) ), 
-            mm(location.y - (vertDiff/2)), 
-            mm(location.x + (nodes[x][y].x * distance) - (horiztonalDiff/2)),  
-            mm(location.y + (nodes[x][y].y) * distance) - (vertDiff/2));
+
+          pdf.pushMatrix();
+          pdf.translate(mm(location.x), mm(location.y));
+          // pdf.rotate(
+          //   radians(
+          //     map(headings[x][y], 0, 1, 0, 360)
+          //   )
+          // );
+          // pdf.ellipse(
+          //   mm(0),
+          //   mm(0),
+          //   mm(1.2),
+          //   mm((mags[x][y] + 1.0) * (1.2))
+          // );
+
+          pdf.square(
+            mm(0), 
+            mm(0), 
+            mm((mags[x][y] + 1.0) * distance));
+
+          pdf.popMatrix();
+
+          
+
+          // pdf.line(
+          //   mm(location.x - (horiztonalDiff/2) ), 
+          //   mm(location.y - (vertDiff/2)), 
+          //   mm(location.x + (nodes[x][y].x * distance) - (horiztonalDiff/2)),  
+          //   mm(location.y + (nodes[x][y].y) * distance) - (vertDiff/2));
 
           // pdf.beginShape();
           // pdf.vertex(mm(location.x), mm(location.y));
